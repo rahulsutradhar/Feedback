@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.CustomerFeedbackForm">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--parent layout -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/layoutOne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/customerName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:padding="10dp"
+                    android:text="Hey! Rahul"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/customerName"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/experienceText"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="normal" />
+
+            </RelativeLayout>
+
+            <!-- feedback form -->
+
+            <LinearLayout
+                android:id="@+id/layoutThree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layoutOne"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical">
+
+                <!--First question -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <!-- Quesntion header -->
+                    <RelativeLayout
+                        android:id="@+id/headerOne"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:layout_width="80dp"
+                                android:layout_height="1.5dp"
+                                android:layout_gravity="center_vertical"
+                                android:background="@color/viewColor" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="20dp"
+                                android:text="@string/food"
+                                android:textColor="@color/formTextColor"
+                                android:textSize="18sp"
+                                android:textStyle="normal" />
+
+                            <View
+                                android:layout_width="80dp"
+                                android:layout_height="1.5dp"
+                                android:layout_gravity="center_vertical"
+                                android:background="@color/viewColor" />
+
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                    <!--Answer form -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/headerOne"
+                        android:layout_centerHorizontal="true"
+                        android:padding="3dp"
+                        android:weightSum="1"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+
+                        <RadioGroup
+                            android:id="@+id/radioFood"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/foodPoor"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight=".2"
+                                android:button="@null"
+                                android:drawableTop="@drawable/background_poor_button"
+                                android:gravity="center"
+                                android:text="@string/bad"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textColor="@color/formTextColor"></RadioButton>
+
+                            <RadioButton
+                                android:id="@+id/foodAverage"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight=".2"
+                                android:button="@null"
+                                android:drawableTop="@drawable/background_average_button"
+                                android:gravity="center"
+                                android:text="@string/average"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textColor="@color/formTextColor"></RadioButton>
+
+                            <RadioButton
+                                android:id="@+id/foodGood"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight=".2"
+                                android:button="@null"
+                                android:drawableTop="@drawable/background_good_button"
+                                android:gravity="center"
+                                android:text="@string/good"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textColor="@color/formTextColor"></RadioButton>
+
+                            <RadioButton
+                                android:id="@+id/foodAwsome"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight=".2"
+                                android:button="@null"
+                                android:drawableTop="@drawable/background_amazing_button"
+                                android:gravity="center"
+                                android:text="@string/amazing"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textColor="@color/formTextColor"></RadioButton>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+
+                <!--Second question -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <!-- Quesntion header -->
+                    <RelativeLayout
+                        android:id="@+id/headerTwo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:layout_width="80dp"
+                                android:layout_height="1.5dp"
+                                android:layout_gravity="center_vertical"
+                                android:background="@color/viewColor" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="20dp"
+                                android:text="@string/ambience"
+                                android:textColor="@color/formTextColor"
+                                android:textSize="18sp"
+                                android:textStyle="normal" />
+
+                            <View
+                                android:layout_width="80dp"
+                                android:layout_height="1.5dp"
+                                android:layout_gravity="center_vertical"
+                                android:background="@color/viewColor" />
+
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                    <!--Answer form -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/headerTwo"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <RadioGroup
+                            android:id="@+id/radioAmbience"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/ambiencePoor"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight=".2"
+                                android:button="@null"
+                                android:drawableTop="@drawable/background_poor_button"
+                                android:gravity="center"
+                                android:text="@string/bad"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textColor="@color/formTextColor"></RadioButton>
+
+                            <RadioButton
+                                android:id="@+id/ambienceAverage"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight=".2"
+                                android:button="@null"
+                                android:drawableTop="@drawable/background_average_button"
+                                android:gravity="center"
+                                android:text="@string/average"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textColor="@color/formTextColor"></RadioButton>
+
+                            <RadioButton
+                                android:id="@+id/ambienceGood"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight=".2"
+                                android:button="@null"
+                                android:drawableTop="@drawable/background_good_button"
+                                android:gravity="center"
+                                android:text="@string/good"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textColor="@color/formTextColor"></RadioButton>
+
+                            <RadioButton
+                                android:id="@+id/ambienceAwsome"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight=".2"
+                                android:button="@null"
+                                android:drawableTop="@drawable/background_amazing_button"
+                                android:gravity="center"
+                                android:text="@string/amazing"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textColor="@color/formTextColor"></RadioButton>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+                <!--Third question -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <!-- Quesntion header -->
+                    <RelativeLayout
+                        android:id="@+id/headerThree"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:layout_width="80dp"
+                                android:layout_height="1.5dp"
+                                android:layout_gravity="center_vertical"
+                                android:background="@color/viewColor" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="20dp"
+                                android:text="@string/service"
+                                android:textColor="@color/formTextColor"
+                                android:textSize="18sp"
+                                android:textStyle="normal" />
+
+                            <View
+                                android:layout_width="80dp"
+                                android:layout_height="1.5dp"
+                                android:layout_gravity="center_vertical"
+                                android:background="@color/viewColor" />
+
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                    <!--Answer form -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/headerThree"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <RadioGroup
+                            android:id="@+id/radioService"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/servicePoor"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight=".2"
+                                android:button="@null"
+                                android:drawableTop="@drawable/background_poor_button"
+                                android:gravity="center"
+                                android:text="@string/bad"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textColor="@color/formTextColor"></RadioButton>
+
+                            <RadioButton
+                                android:id="@+id/serviceAverage"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight=".2"
+                                android:button="@null"
+                                android:drawableTop="@drawable/background_average_button"
+                                android:gravity="center"
+                                android:text="@string/average"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textColor="@color/formTextColor"></RadioButton>
+
+                            <RadioButton
+                                android:id="@+id/serviceGood"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight=".2"
+                                android:button="@null"
+                                android:drawableTop="@drawable/background_good_button"
+                                android:gravity="center"
+                                android:text="@string/good"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textColor="@color/formTextColor"></RadioButton>
+
+                            <RadioButton
+                                android:id="@+id/serviceAwsome"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight=".2"
+                                android:button="@null"
+                                android:drawableTop="@drawable/background_amazing_button"
+                                android:gravity="center"
+                                android:text="@string/amazing"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textColor="@color/formTextColor"></RadioButton>
+
+                        </RadioGroup>
+
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <!--submit Button -->
+
+            <Button
+                android:id="@+id/submitFeedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layoutThree"
+                android:layout_marginBottom="60dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="40dp"
+                android:background="@color/formTextColor"
+                android:text="SUBMIT"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+</RelativeLayout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.emplaceme.feedback">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".Applications.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Activity.Home"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activity.OutletLogin"
+            android:theme="@style/AppThemeOne">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activity.CustomerLogin"
+            android:theme="@style/AppTheme.ActionBar.Transparent"
+            android:windowSoftInputMode="adjustPan">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activity.Home" />
+        </activity>
+        <activity
+            android:name=".Activity.CustomerFeedbackForm"
+            android:theme="@style/AppThemeFour" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activity.CustomerLogin" />
+            </activity>
+
+        <activity
+            android:name=".Activity.CustomerDateForm"
+            android:theme="@style/AppThemeThree"></activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Feedback</string>
+
+    <string name="mobile_number">Mobile</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="amount">Amount ( Rupees )</string>
+    <string name="numCustomer">No. of people</string>
+    <string name="welcomeFeedback">We love your feedback</string>
+    <string name="spendTime">Please spend 30 sec and help us in improving our service quality</string>
+    <string name="continueText">CONTINUE</string>
+    <string name="emailId">Email (Optional)</string>
+    <string name="emailIdOutlet">Email</string>
+
+    <string name="thankYou">Thank You</string>
+    <string name="greetingMessage">Would you like to receive exclusive deals on the days you deserves the most ?.</string>
+    <string name="name">Name</string>
+    <string name="submitText">Submit</string>
+    <string name="dob">Date of birth</string>
+    <string name="aniversary">Anniversary</string>
+    <string name="experienceText">How was your experience ?</string>
+    <string name="food">FOOD</string>
+    <string name="ambience">AMBIENCE</string>
+    <string name="service">SERVICE</string>
+    <string name="amazing">Awsome</string>
+    <string name="good">Good</string>
+    <string name="average">Average</string>
+    <string name="bad">Poor</string>
+
+</resources>
