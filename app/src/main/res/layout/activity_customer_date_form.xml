@@ -7,74 +7,126 @@
 
 
     <RelativeLayout
-        android:id="@+id/layoutOne"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_action_green_done" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/layoutTwo"
+        android:id="@+id/upperLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/layoutOne"
-        android:layout_marginTop="5dp">
+        android:layout_height="wrap_content">
 
-        <TextView
+        <RelativeLayout
+            android:id="@+id/layoutOne"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:gravity="center_horizontal"
-            android:text="@string/thankYou"
-            android:textColor="@android:color/black"
-            android:textSize="24dp"
-            android:textStyle="bold" />
+            android:layout_marginTop="48dp">
 
-    </RelativeLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_action_green_done" />
 
-    <RelativeLayout
-        android:id="@+id/layoutThree"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/layoutTwo"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="30dp">
+        </RelativeLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/layoutTwo"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:gravity="center_horizontal"
-            android:padding="5dp"
-            android:text="@string/greetingMessage"
-            android:textColor="@android:color/black"
-            android:textSize="16dp"
-            android:textStyle="normal" />
+            android:layout_below="@+id/layoutOne"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:id="@+id/greetingThanx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:text="@string/thankYou"
+                android:textColor="@android:color/black"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/greetingThanx"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:text="Rahul Sutradhar"
+                android:textColor="@android:color/black"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/layoutThree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layoutTwo"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:id="@+id/messageDeals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:padding="5dp"
+                android:text="@string/greetingMessage"
+                android:textColor="@android:color/black"
+                android:textSize="16dp"
+                android:textStyle="normal"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/messageFeedback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:padding="5dp"
+                android:text="@string/greetingMessageFeedback"
+                android:textColor="@android:color/black"
+                android:textSize="16dp"
+                android:textStyle="normal"
+                android:visibility="visible" />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/doneButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layoutThree"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="40dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/doneText"
+            android:textColor="#FFFFFF"
+            android:visibility="visible" />
 
     </RelativeLayout>
-
 
     <RelativeLayout
         android:id="@+id/layoutFour"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/layoutThree"
+        android:layout_below="@+id/upperLayout"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="30dp"
+        android:visibility="gone">
 
         <RelativeLayout
             android:id="@+id/layoutFormOne"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:visibility="gone">
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_layout_name"
@@ -86,8 +138,8 @@
                     android:id="@+id/input_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
                     android:hint="@string/name"
+                    android:inputType="text"
                     android:singleLine="true"
                     android:textColorHint="#E6E6E6" />
             </android.support.design.widget.TextInputLayout>
@@ -105,19 +157,19 @@
                 android:id="@+id/input_layout_dob"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="0dp">
 
 
                 <EditText
                     android:id="@+id/input_dob"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:editable="false"
                     android:hint="@string/dob"
                     android:inputType="none"
-                    android:textIsSelectable="true"
-                    android:editable="false"
                     android:singleLine="true"
-                    android:textColorHint="#808080" />
+                    android:textColorHint="#808080"
+                    android:textIsSelectable="true" />
             </android.support.design.widget.TextInputLayout>
 
         </RelativeLayout>
@@ -132,19 +184,19 @@
                 android:id="@+id/input_layout_anniversary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="0dp">
 
 
                 <EditText
                     android:id="@+id/input_anniversary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:editable="false"
                     android:hint="@string/aniversary"
                     android:inputType="none"
-                    android:textIsSelectable="true"
-                    android:editable="false"
                     android:singleLine="true"
-                    android:textColorHint="#808080" />
+                    android:textColorHint="#808080"
+                    android:textIsSelectable="true" />
             </android.support.design.widget.TextInputLayout>
 
         </RelativeLayout>
@@ -154,9 +206,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/layoutFormThree"
-            android:layout_marginTop="15dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
             android:background="@color/colorPrimary"
             android:text="@string/submitText"
             android:textColor="#FFFFFF" />

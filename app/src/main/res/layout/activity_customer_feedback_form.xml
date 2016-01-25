@@ -345,6 +345,7 @@
                         android:layout_below="@+id/headerThree"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
+                        android:layout_marginBottom="60dp"
                         android:orientation="horizontal">
 
                         <RadioGroup
@@ -416,22 +417,7 @@
 
             </LinearLayout>
 
-            <!--submit Button -->
-
-            <Button
-                android:id="@+id/submitFeedback"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/layoutThree"
-                android:layout_marginBottom="60dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginTop="40dp"
-                android:background="@color/formTextColor"
-                android:text="SUBMIT"
-                android:textColor="@android:color/white"
-                android:textSize="16sp" />
-
+        
 
         </RelativeLayout>
 

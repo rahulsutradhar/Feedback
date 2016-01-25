@@ -68,6 +68,7 @@ public class CustomerLogin extends AppCompatActivity implements TextWatcher {
     String countryCode = "";
     String phoneNumber = "";
     String outletName = "";
+    boolean flagEmail = false;
 
 
     @Override
@@ -80,7 +81,7 @@ public class CustomerLogin extends AppCompatActivity implements TextWatcher {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         SharedPreferences userData = PreferenceManager.getDefaultSharedPreferences(this);
-        outletName = userData.getString("outlet_name", "");
+        outletName = userData.getString("client_name", "");
 
         //get data from intent
         Intent i = getIntent();
@@ -276,6 +277,7 @@ public class CustomerLogin extends AppCompatActivity implements TextWatcher {
         String userAnniversary = "";
 
 
+
         if (response != null && response.length() > 0) {
             try {
 
@@ -302,6 +304,7 @@ public class CustomerLogin extends AppCompatActivity implements TextWatcher {
                         if (jsonObject.has(KEY_USER_EMAIL) && !jsonObject.isNull(KEY_USER_EMAIL))
                         {
                             userEmail = jsonObject.getString(KEY_USER_EMAIL);
+
                         }
 
                         //country id
@@ -333,12 +336,18 @@ public class CustomerLogin extends AppCompatActivity implements TextWatcher {
 
                 }
 
+                SharedPreferences userCredential = PreferenceManager.getDefaultSharedPreferences(this);
+                SharedPreferences.Editor editor = userCredential.edit();
+
                 //if email exist then display in the edit text box
                 if(userEmail.isEmpty() == false)
                 {
                     inputEmail.setText("");
                     inputEmail.setText(userEmail);
                     inputEmailLayout.setErrorEnabled(false);
+
+                    //put email in local
+                    editor.putString("user_email", userEmail);
 
                     //hide keyboard
                     if(inputEmail.isFocused() == true || inputPhone.isFocused())
@@ -350,13 +359,17 @@ public class CustomerLogin extends AppCompatActivity implements TextWatcher {
 
                     }
                 }
+                else {
+                    //if json doesnot give userEmail id
+                    flagEmail = true;
+
+                }
 
                 //save data in shared preferance
-                SharedPreferences userCredential = PreferenceManager.getDefaultSharedPreferences(this);
-                SharedPreferences.Editor editor = userCredential.edit();
+
+
                 editor.putString("user_id",userId);
                 editor.putString("user_name",userName);
-                editor.putString("user_email", userEmail);
                 editor.putString("country_id",countryId);
                 editor.putString("user_phone",userPhone);
                 editor.putString("user_dob",userDob);
@@ -398,15 +411,30 @@ public class CustomerLogin extends AppCompatActivity implements TextWatcher {
             p = 0;
         }
 
-        if (checkEmailValidation(email) == false)
+        SharedPreferences userCredential = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = userCredential.edit();
+
+        //check if email id is present or not
+        if(email.isEmpty() == false)
         {
-            inputEmailLayout.setErrorEnabled(true);
-            inputEmailLayout.setError("Invalid email id");
-            e = 1;
+            if (checkEmailValidation(email) == false)
+            {
+                inputEmailLayout.setErrorEnabled(true);
+                inputEmailLayout.setError("Invalid email id");
+                e = 1;
+            }else {
+                e = 0;
+                inputEmailLayout.setErrorEnabled(false);
+
+                //put the email in shared preferance
+                editor.putString("user_email", email);
+            }
         }else {
             e = 0;
-            inputEmailLayout.setErrorEnabled(false);
+            editor.putString("user_email", "");
         }
+
+        editor.apply();
 
         if(p == 0 && e == 0)
         {

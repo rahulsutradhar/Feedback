@@ -7,7 +7,7 @@ public interface LinkDetails {
 
     public interface URL {
 
-        public static final String URL_SERVER = "192.168.0.113";
+        public static final String URL_SERVER = "192.168.0.102";
 
         public static final String URL_OUTLET_LOGIN = "http://"+URL_SERVER+"/emplace/public/api/client/login";
         public static final String URL_EXISTING_OUTLET = "http://"+URL_SERVER+"/emplace/public/api/client";

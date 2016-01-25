@@ -5,7 +5,7 @@
     <string name="phone_number">Phone Number</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
-    <string name="amount">Amount ( Rupees )</string>
+    <string name="amount">Amount</string>
     <string name="numCustomer">No. of people</string>
     <string name="welcomeFeedback">We love your feedback</string>
     <string name="spendTime">Please spend 30 sec and help us in improving our service quality</string>
@@ -15,8 +15,10 @@
 
     <string name="thankYou">Thank You</string>
     <string name="greetingMessage">Would you like to receive exclusive deals on the days you deserves the most ?.</string>
+    <string name="greetingMessageFeedback">Your feedback is valueable to us.</string>
     <string name="name">Name</string>
     <string name="submitText">Submit</string>
+    <string name="doneText">Submit</string>
     <string name="dob">Date of birth</string>
     <string name="aniversary">Anniversary</string>
     <string name="experienceText">How was your experience ?</string>

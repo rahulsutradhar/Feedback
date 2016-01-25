@@ -33,15 +33,18 @@
         </activity>
         <activity
             android:name=".Activity.CustomerFeedbackForm"
-            android:theme="@style/AppThemeFour" >
+            android:theme="@style/AppThemeFour">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.CustomerLogin" />
-            </activity>
-
+        </activity>
         <activity
             android:name=".Activity.CustomerDateForm"
-            android:theme="@style/AppThemeThree"></activity>
+            android:theme="@style/AppThemeThree" />
+
+        <activity android:name=".Activity.ThanxGiving" android:theme="@style/AppThemeThree" ></activity>
+
+
     </application>
 
 </manifest>

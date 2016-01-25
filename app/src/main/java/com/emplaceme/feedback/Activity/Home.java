@@ -1,6 +1,8 @@
 package com.emplaceme.feedback.Activity;
 
+import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
@@ -12,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toolbar;
@@ -45,7 +48,7 @@ public class Home extends AppCompatActivity {
         editor.putString("user_anniversary", "");
         editor.apply();
 
-        outletName = userCredential.getString("outlet_name","");
+        outletName = userCredential.getString("client_name","");
         if(outletName.isEmpty() == false){
             getSupportActionBar().setTitle(outletName);
         }else {
@@ -79,6 +82,10 @@ public class Home extends AppCompatActivity {
         final TextInputLayout peopleLayout = (TextInputLayout) dialogAmount.findViewById(R.id.input_layout_people);
         final EditText amountInput = (EditText) dialogAmount.findViewById(R.id.input_amount);
         final EditText peopleInput = (EditText) dialogAmount.findViewById(R.id.input_people);
+
+        amountInput.requestFocus();
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(amountInput, InputMethodManager.SHOW_IMPLICIT);
 
         if (amountInput.isFocused()) {
             amountInput.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);

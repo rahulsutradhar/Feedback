@@ -23,10 +23,7 @@ public class CustomerFeedbackForm extends AppCompatActivity {
     private RadioGroup groupService;
 
     private TextView userNameView;
-
-    private Button submit;
-
-    String outletName = "";
+ String outletName = "";
     String userName = "";
     float amount;
     int numberPeople;
@@ -44,7 +41,7 @@ public class CustomerFeedbackForm extends AppCompatActivity {
         setContentView(R.layout.activity_customer_feedback_form);
 
         SharedPreferences userData = PreferenceManager.getDefaultSharedPreferences(this);
-        outletName = userData.getString("outlet_name", "");
+        outletName = userData.getString("client_name", "");
         userName = userData.getString("user_name","");
 
 
@@ -69,16 +66,6 @@ public class CustomerFeedbackForm extends AppCompatActivity {
         groupAmbience = (RadioGroup) findViewById(R.id.radioAmbience);
         groupService = (RadioGroup) findViewById(R.id.radioService);
 
-
-        submit = (Button) findViewById(R.id.submitFeedback);
-
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkFeedbackProvided();
-
-            }
-        });
 
         if(userName.isEmpty() == false)
         {
@@ -139,6 +126,8 @@ public class CustomerFeedbackForm extends AppCompatActivity {
                         break;
                 }
 
+                checkFeedbackProvided();
+
             }
         });
 
@@ -165,6 +154,8 @@ public class CustomerFeedbackForm extends AppCompatActivity {
                         break;
                 }
 
+                checkFeedbackProvided();
+
             }
         });
 
@@ -190,6 +181,8 @@ public class CustomerFeedbackForm extends AppCompatActivity {
                         break;
                 }
 
+                checkFeedbackProvided();
+
             }
         });
 
@@ -210,8 +203,6 @@ public class CustomerFeedbackForm extends AppCompatActivity {
             screen.putExtra("service_feedback",service);
             startActivity(screen);
 
-        }else {
-            Toast.makeText(this,"Please provide all feedback",Toast.LENGTH_SHORT).show();
         }
 
     }

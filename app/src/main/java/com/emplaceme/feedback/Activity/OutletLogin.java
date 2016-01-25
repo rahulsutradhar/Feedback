@@ -14,10 +14,8 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
-import com.android.volley.NetworkResponse;
 import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -29,17 +27,21 @@ import com.android.volley.toolbox.StringRequest;
 import com.emplaceme.feedback.Network.VolleySingleton;
 import com.emplaceme.feedback.R;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.emplaceme.feedback.Extras.Keys.EndpointsOutlet.KEY_ID;
+import static com.emplaceme.feedback.Extras.Keys.EndpointsOutlet.KEY_OUTLET_BRANCH_ID;
+import static com.emplaceme.feedback.Extras.Keys.EndpointsOutlet.KEY_OUTLET_CLIENT_ID;
+import static com.emplaceme.feedback.Extras.Keys.EndpointsOutlet.KEY_OUTLET_CLIENT_NAME;
+
+import static com.emplaceme.feedback.Extras.Keys.EndpointsOutlet.KEY_OUTLET_COMPANY_DESCRIPTION;
+import static com.emplaceme.feedback.Extras.Keys.EndpointsOutlet.KEY_OUTLET_COMPANY_DETAILS;
 import static com.emplaceme.feedback.Extras.Keys.EndpointsOutlet.KEY_OUTLET_COMPANY_ID;
-import static com.emplaceme.feedback.Extras.Keys.EndpointsOutlet.KEY_OUTLET_EMAIL;
-import static com.emplaceme.feedback.Extras.Keys.EndpointsOutlet.KEY_OUTLET_NAME;
-import static com.emplaceme.feedback.Extras.Keys.EndpointsOutlet.KEY_OUTLET_USER;
+import static com.emplaceme.feedback.Extras.Keys.EndpointsOutlet.KEY_OUTLET_COMPANY_NAME;
 import static com.emplaceme.feedback.Extras.LinkDetails.URL.URL_EXISTING_OUTLET;
 import static com.emplaceme.feedback.Extras.LinkDetails.URL.URL_OUTLET_LOGIN;
 import static com.emplaceme.feedback.Extras.Keys.EndpointsOutlet.KEY_DATA;
@@ -95,13 +97,13 @@ public class OutletLogin extends AppCompatActivity {
 
                 if (keyCode == KeyEvent.KEYCODE_ENTER) {
 
-                    if(passwordText.isFocused())
-                    {
+                    if (passwordText.isFocused()) {
                         ((InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE))
                                 .toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0);
                     }
                     //check th validations
                     checkValidation();
+
                     return true;
                 }
                 return false;
@@ -225,7 +227,7 @@ public class OutletLogin extends AppCompatActivity {
                                 editor.putString("access_token", accessToken);
                                 editor.apply();
 
-                               // Toast.makeText(getApplicationContext(), "Access Token = " + accessToken, Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(getApplicationContext(), "Access Token = " + accessToken, Toast.LENGTH_SHORT).show();
                                 //server request to get the client details
                                 callServerForClientData(getUrl(accessToken));
 
@@ -331,6 +333,7 @@ public class OutletLogin extends AppCompatActivity {
                             //login successfull
                             //open new intent
                             Intent intent = new Intent(OutletLogin.this, Home.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
 
                         }
@@ -353,10 +356,12 @@ public class OutletLogin extends AppCompatActivity {
     }
 
     public boolean parseJsonDataForOutletData(JSONObject response) {
-        String id = "";
-        String name = "";
-        String email = "";
-        String company = "";
+        String clientId = "";
+        String clientName = "";
+        String branchId = "";
+        String companyId = "";
+        String companyName = "";
+        String companyDesc = "";
         boolean flag = false;
 
         if (response != null && response.length() > 0) {
@@ -364,39 +369,55 @@ public class OutletLogin extends AppCompatActivity {
             flag = true;
 
             try {
-                JSONObject jsonObject = response.getJSONObject(KEY_DATA);
 
-                if (jsonObject.has(KEY_OUTLET_USER) && !jsonObject.isNull(KEY_OUTLET_USER)) {
-                    JSONObject userObject = jsonObject.getJSONObject(KEY_OUTLET_USER);
+                if (response.has(KEY_DATA) && !response.isNull(KEY_DATA)) {
+                    JSONObject jsonObject = response.getJSONObject(KEY_DATA);
 
-                    if (userObject.has(KEY_ID) && !userObject.isNull(KEY_ID)) {
-                        id = userObject.getString(KEY_ID);
+                    if (jsonObject.has(KEY_OUTLET_CLIENT_ID) && !jsonObject.isNull(KEY_OUTLET_CLIENT_ID)) {
+                        clientId = jsonObject.getString(KEY_OUTLET_CLIENT_ID);
                     }
 
-                    if (userObject.has(KEY_OUTLET_NAME) && !userObject.isNull(KEY_OUTLET_NAME)) {
-                        name = userObject.getString(KEY_OUTLET_NAME);
+                    if (jsonObject.has(KEY_OUTLET_CLIENT_NAME) && !jsonObject.isNull(KEY_OUTLET_CLIENT_NAME)) {
+                        clientName = jsonObject.getString(KEY_OUTLET_CLIENT_NAME);
                     }
 
-                    if (userObject.has(KEY_OUTLET_EMAIL) && !userObject.isNull(KEY_OUTLET_EMAIL)) {
-                        email = userObject.getString(KEY_OUTLET_EMAIL);
+                    if (jsonObject.has(KEY_OUTLET_BRANCH_ID) && !jsonObject.isNull(KEY_OUTLET_BRANCH_ID)) {
+                        branchId = jsonObject.getString(KEY_OUTLET_BRANCH_ID);
                     }
 
-                    if (userObject.has(KEY_OUTLET_COMPANY_ID) && !userObject.isNull(KEY_OUTLET_COMPANY_ID)) {
-                        company = userObject.getString(KEY_OUTLET_COMPANY_ID);
+                    JSONArray jsonArray = jsonObject.getJSONArray(KEY_OUTLET_COMPANY_DETAILS);
+
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject object = jsonArray.getJSONObject(i);
+
+                        if (object.has(KEY_OUTLET_COMPANY_ID) && !object.isNull(KEY_OUTLET_COMPANY_ID)) {
+                            companyId = object.getString(KEY_OUTLET_COMPANY_ID);
+                        }
+
+                        if (object.has(KEY_OUTLET_COMPANY_NAME) && !object.isNull(KEY_OUTLET_COMPANY_NAME)) {
+                            companyName = object.getString(KEY_OUTLET_COMPANY_NAME);
+                        }
+
+                        if (object.has(KEY_OUTLET_COMPANY_DESCRIPTION) && !object.isNull(KEY_OUTLET_COMPANY_DESCRIPTION)) {
+                            companyDesc = object.getString(KEY_OUTLET_COMPANY_DESCRIPTION);
+                        }
+
                     }
-
-
-                    //save as local data
-                    SharedPreferences outletData = PreferenceManager.getDefaultSharedPreferences(OutletLogin.this);
-                    SharedPreferences.Editor editor = outletData.edit();
-                    editor.putString("outlet_id", id);
-                    editor.putString("outlet_name", name);
-                    editor.putString("outlet_email", email);
-                    editor.putString("outlet_company_id", company);
-                    editor.apply();
 
 
                 }
+
+
+                //save as local data
+                SharedPreferences outletData = PreferenceManager.getDefaultSharedPreferences(OutletLogin.this);
+                SharedPreferences.Editor editor = outletData.edit();
+                editor.putString("client_id", clientId);
+                editor.putString("client_name", clientName);
+                editor.putString("branch_id", branchId);
+                editor.putString("company_id", companyId);
+                editor.putString("company_name", companyName);
+                editor.putString("company_desc", companyDesc);
+                editor.apply();
 
 
             } catch (JSONException e) {
