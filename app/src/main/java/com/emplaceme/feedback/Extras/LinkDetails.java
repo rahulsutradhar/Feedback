@@ -7,12 +7,12 @@ public interface LinkDetails {
 
     public interface URL {
 
-        public static final String URL_SERVER = "192.168.0.102";
+        public static final String URL_SERVER = "emplace.me";
 
-        public static final String URL_OUTLET_LOGIN = "http://"+URL_SERVER+"/emplace/public/api/client/login";
-        public static final String URL_EXISTING_OUTLET = "http://"+URL_SERVER+"/emplace/public/api/client";
-        public static final String URL_EXISTING_USER = "http://"+URL_SERVER+"/emplace/public/api/client/check_existing_user";
-        public static final String URL_FEEDBACK = "http://"+URL_SERVER+"/emplace/public/api/client/feedback";
+        public static final String URL_OUTLET_LOGIN = "http://"+URL_SERVER+"/api/client/login";
+        public static final String URL_EXISTING_OUTLET = "http://"+URL_SERVER+"/api/client";
+        public static final String URL_EXISTING_USER = "http://"+URL_SERVER+"/api/client/check_existing_user";
+        public static final String URL_FEEDBACK = "http://"+URL_SERVER+"/api/client/feedback";
 
     }
 }

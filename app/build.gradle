@@ -17,11 +17,25 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        main {
+            assets.srcDirs = [  'src/main/res/assets' ]
+
+            res.srcDirs = ['src/main/res/layouts/activity',
+                           'src/main/res/layouts/dialog',
+                           'src/main/res/layouts/extras',
+                           'src/main/res/layouts',
+                           'src/main/res'
+                          ]
+        }
+    }
+
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
+
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.0.1'
     compile 'com.mcxiaoke.volley:library:1.0.19'
